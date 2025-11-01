@@ -32,7 +32,6 @@
             --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
         }
 
-        /* وضع الليل */
         body.dark-mode {
             --app-bg: #121212;
             --card-bg: #1e1e1e;
@@ -54,7 +53,6 @@
             -webkit-text-size-adjust: 100%;
         }
         
-        /* شاشة الترحيب */
         .welcome-screen {
             position: fixed;
             top: 0;
@@ -118,11 +116,6 @@
             font-weight: 500;
         }
         
-        .quote-icon {
-            font-size: 1.5rem;
-            margin-left: 10px;
-        }
-        
         .developer-info {
             margin-top: 20px;
             font-size: 1rem;
@@ -149,13 +142,133 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
         
-        /* App Layout */
+        .auth-screen {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .auth-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .auth-container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .auth-title {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+        
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .auth-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .auth-form {
+            display: none;
+        }
+        
+        .auth-form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s;
+            min-height: 44px;
+        }
+        
+        .form-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .auth-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        .auth-btn:hover {
+            background: var(--secondary);
+        }
+        
+        .auth-link {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-secondary);
+        }
+        
+        .auth-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
         .app-container {
             display: flex;
             min-height: 100vh;
         }
         
-        /* Sidebar Styles */
         .sidebar {
             width: var(--sidebar-width);
             background: linear-gradient(180deg, var(--primary), var(--secondary));
@@ -228,7 +341,6 @@
             font-size: 1.2rem;
         }
         
-        /* Main Content */
         .main-content {
             flex: 1;
             margin-right: 0;
@@ -242,7 +354,6 @@
             margin-right: var(--sidebar-width);
         }
         
-        /* Header Styles */
         .app-header {
             background: var(--card-bg);
             color: var(--text-primary);
@@ -311,6 +422,7 @@
             cursor: pointer;
             transition: background 0.3s;
             touch-action: manipulation;
+            position: relative;
         }
         
         .user-avatar {
@@ -326,7 +438,34 @@
             margin-left: 10px;
         }
         
-        /* Content Area */
+        .user-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            margin-top: 10px;
+            display: none;
+            z-index: 101;
+        }
+        
+        .user-menu.active {
+            display: block;
+        }
+        
+        .user-menu-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .user-menu-item:hover {
+            background: var(--light);
+        }
+        
         .content-area {
             flex: 1;
             padding: 20px;
@@ -336,7 +475,6 @@
             overflow-x: hidden;
         }
         
-        /* Card Styles */
         .card {
             background: var(--card-bg);
             border-radius: 12px;
@@ -363,7 +501,6 @@
             padding: 20px;
         }
         
-        /* Grid Layout */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -371,7 +508,6 @@
             margin: 20px 0;
         }
         
-        /* Button Styles */
         .btn {
             display: flex;
             align-items: center;
@@ -438,7 +574,6 @@
             font-size: 1.2rem;
         }
         
-        /* Form Styles */
         .form-group {
             margin-bottom: 20px;
         }
@@ -450,7 +585,7 @@
             color: var(--text-primary);
         }
         
-        input[type="text"], input[type="url"], input[type="password"], select {
+        input[type="text"], input[type="url"], input[type="password"], input[type="email"], select {
             width: 100%;
             padding: 14px 16px;
             border: 1px solid #ddd;
@@ -463,12 +598,11 @@
             min-height: 44px;
         }
         
-        input[type="text"]:focus, input[type="url"]:focus, input[type="password"]:focus, select:focus {
+        input[type="text"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="email"]:focus, select:focus {
             border-color: var(--primary);
             outline: none;
         }
 
-        /* Toggle Switch */
         .toggle-switch {
             position: relative;
             display: inline-block;
@@ -535,7 +669,6 @@
             font-size: 1.2rem;
         }
         
-        /* Preview Container */
         .preview-container {
             padding: 20px;
             background: var(--card-bg);
@@ -554,7 +687,6 @@
             margin: 15px 0;
         }
         
-        /* Quran Grid */
         .quran-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -562,7 +694,6 @@
             margin-top: 20px;
         }
         
-        /* Loading Animation */
         .loading {
             text-align: center;
             padding: 30px;
@@ -583,7 +714,6 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Alert Styles */
         .alert {
             padding: 15px;
             border-radius: 8px;
@@ -596,7 +726,6 @@
         .alert-warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
         .alert-info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
         
-        /* Footer */
         .app-footer {
             text-align: center;
             padding: 20px;
@@ -616,12 +745,10 @@
             opacity: 0.8;
         }
         
-        /* Hidden Class */
         .hidden {
             display: none;
         }
         
-        /* Progress Bar */
         .progress-bar {
             width: 100%;
             height: 8px;
@@ -638,7 +765,6 @@
             transition: width 0.3s ease;
         }
         
-        /* Breadcrumb */
         .breadcrumb {
             display: flex;
             align-items: center;
@@ -657,7 +783,6 @@
             color: var(--text-secondary);
         }
         
-        /* Service Card */
         .service-card {
             display: flex;
             flex-direction: column;
@@ -696,7 +821,6 @@
             color: var(--text-secondary);
         }
         
-        /* Download History */
         .download-history {
             margin-top: 30px;
         }
@@ -723,7 +847,6 @@
             font-size: 1.2rem;
         }
         
-        /* Overlay for sidebar */
         .overlay {
             position: fixed;
             top: 0;
@@ -739,7 +862,6 @@
             display: block;
         }
         
-        /* Bottom Navigation */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -793,12 +915,10 @@
             line-height: 1.2;
         }
 
-        /* Mobile-specific improvements */
         .mobile-only {
             display: none;
         }
 
-        /* Swipe gestures for sidebar */
         .swipe-area {
             position: fixed;
             top: 0;
@@ -808,13 +928,35 @@
             z-index: 1001;
         }
 
-        /* Touch feedback */
         .touch-feedback:active {
             opacity: 0.7;
             transform: scale(0.98);
         }
 
-        /* Mobile optimizations */
+        .media-player {
+            width: 100%;
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .media-player video, .media-player audio {
+            width: 100%;
+            display: block;
+        }
+        
+        .player-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            gap: 10px;
+        }
+        
+        .player-controls .btn {
+            flex: 1;
+        }
+
         @media (max-width: 768px) {
             body {
                 font-size: 14px;
@@ -902,14 +1044,32 @@
                 display: none;
             }
 
-            /* Improved touch targets */
             .menu-item, .btn, .service-card, .nav-item {
                 min-height: 44px;
             }
 
-            /* Swipe to close sidebar */
             .sidebar {
                 touch-action: pan-y;
+            }
+            
+            .history-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .history-item .file-info {
+                width: 100%;
+            }
+            
+            .history-item .actions {
+                display: flex;
+                width: 100%;
+                gap: 10px;
+            }
+            
+            .history-item .actions .btn {
+                flex: 1;
             }
         }
         
@@ -959,16 +1119,6 @@
                 padding: 12px 15px;
             }
 
-            .history-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-
-            .history-item .btn {
-                width: 100%;
-            }
-
             .header-right .user-profile span {
                 display: none;
             }
@@ -996,21 +1146,18 @@
             }
         }
 
-        /* iPhone X and later support */
         @supports (padding: max(0px)) {
             .bottom-nav {
                 padding-bottom: max(8px, var(--safe-area-inset-bottom));
             }
         }
 
-        /* Prevent zoom on input focus on iOS */
         @media screen and (max-width: 768px) {
             input, select, textarea {
                 font-size: 16px;
             }
         }
 
-        /* High contrast mode support */
         @media (prefers-contrast: high) {
             .card {
                 border: 1px solid var(--text-primary);
@@ -1021,7 +1168,6 @@
             }
         }
 
-        /* Reduced motion support */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
@@ -1032,16 +1178,13 @@
     </style>
 </head>
 <body>
-    <!-- شاشة الترحيب -->
     <div class="welcome-screen" id="welcomeScreen">
         <div class="app-logo">📥</div>
         <h1 class="welcome-title">تحميل الملفات الشامل</h1>
         <p class="welcome-subtitle">أداة متكاملة لتحميل المحتوى من أي موقع أو تطبيق</p>
         
         <div class="quote-container">
-            <div class="quote" id="quoteText">
-                <!-- سيتم عرض الاقتباسات هنا -->
-            </div>
+            <div class="quote" id="quoteText"></div>
         </div>
         
         <div class="developer-info">المطور: عبد الوهاب عبد الواحد الريمي</div>
@@ -1049,11 +1192,66 @@
         <button class="enter-btn touch-feedback" id="enterBtn">الدخول إلى التطبيق</button>
     </div>
 
-    <!-- منطقة السحب لإغلاق القائمة الجانبية -->
+    <div class="auth-screen hidden" id="authScreen">
+        <div class="auth-container">
+            <h2 class="auth-title">مرحباً بعودتك</h2>
+            
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="loginTab">تسجيل الدخول</div>
+                <div class="auth-tab" id="registerTab">إنشاء حساب</div>
+            </div>
+            
+            <div class="auth-form active" id="loginForm">
+                <div class="form-group">
+                    <label for="login-email">البريد الإلكتروني</label>
+                    <input type="email" id="login-email" placeholder="أدخل بريدك الإلكتروني">
+                </div>
+                
+                <div class="form-group">
+                    <label for="login-password">كلمة المرور</label>
+                    <input type="password" id="login-password" placeholder="أدخل كلمة المرور">
+                </div>
+                
+                <button class="auth-btn touch-feedback" id="loginBtn">تسجيل الدخول</button>
+                
+                <div class="auth-link">
+                    ليس لديك حساب؟ <a href="#" id="showRegister">إنشاء حساب جديد</a>
+                </div>
+            </div>
+            
+            <div class="auth-form" id="registerForm">
+                <div class="form-group">
+                    <label for="register-username">اسم المستخدم</label>
+                    <input type="text" id="register-username" placeholder="اختر اسم مستخدم">
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-email">البريد الإلكتروني</label>
+                    <input type="email" id="register-email" placeholder="أدخل بريدك الإلكتروني">
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-password">كلمة المرور</label>
+                    <input type="password" id="register-password" placeholder="اختر كلمة مرور قوية">
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-confirm-password">تأكيد كلمة المرور</label>
+                    <input type="password" id="register-confirm-password" placeholder="أعد إدخال كلمة المرور">
+                </div>
+                
+                <button class="auth-btn touch-feedback" id="registerBtn">إنشاء حساب</button>
+                
+                <div class="auth-link">
+                    لديك حساب بالفعل؟ <a href="#" id="showLogin">تسجيل الدخول</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="swipe-area" id="swipeArea"></div>
 
     <div class="app-container">
-        <!-- Sidebar -->
         <div class="sidebar hidden" id="sidebar">
             <div class="sidebar-header">
                 <div class="sidebar-title">القائمة</div>
@@ -1100,19 +1298,24 @@
                     <span class="menu-icon">📋</span>
                     <span>سجل التحميلات</span>
                 </a>
+                <a href="#" class="menu-item touch-feedback" onclick="showSection('profile')">
+                    <span class="menu-icon">👤</span>
+                    <span>الملف الشخصي</span>
+                </a>
                 <a href="#" class="menu-item touch-feedback" onclick="showSection('settings')">
                     <span class="menu-icon">⚙️</span>
                     <span>الإعدادات</span>
                 </a>
+                <a href="#" class="menu-item touch-feedback" onclick="logout()">
+                    <span class="menu-icon">🚪</span>
+                    <span>تسجيل الخروج</span>
+                </a>
             </div>
         </div>
 
-        <!-- Overlay for sidebar -->
         <div class="overlay" id="overlay"></div>
 
-        <!-- Main Content -->
         <div class="main-content" id="mainContent">
-            <!-- Header -->
             <header class="app-header">
                 <div class="header-left">
                     <button class="menu-toggle touch-feedback">☰</button>
@@ -1120,16 +1323,19 @@
                 </div>
                 <div class="header-right">
                     <button class="theme-toggle touch-feedback" id="themeToggle">🌙</button>
-                    <div class="user-profile touch-feedback">
-                        <div class="user-avatar">ع</div>
-                        <span class="desktop-only">عبد الوهاب</span>
+                    <div class="user-profile touch-feedback" id="userProfile">
+                        <div class="user-avatar" id="userAvatar">?</div>
+                        <span class="desktop-only" id="userName">زائر</span>
+                        <div class="user-menu" id="userMenu">
+                            <div class="user-menu-item" onclick="showSection('profile')">الملف الشخصي</div>
+                            <div class="user-menu-item" onclick="showSection('settings')">الإعدادات</div>
+                            <div class="user-menu-item" onclick="logout()">تسجيل الخروج</div>
+                        </div>
                     </div>
                 </div>
             </header>
 
-            <!-- Content Area -->
             <div class="content-area">
-                <!-- الصفحة الرئيسية -->
                 <div id="main-page">
                     <div class="card">
                         <div class="card-body">
@@ -1203,18 +1409,14 @@
                         </div>
                     </div>
                     
-                    <!-- سجل التحميلات -->
                     <div class="card download-history">
                         <div class="card-header">📋 سجل التحميلات الحديثة</div>
                         <div class="card-body">
-                            <div id="download-history-list">
-                                <!-- سيتم ملء هذا القسم تلقائياً -->
-                            </div>
+                            <div id="download-history-list"></div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- صفحات أخرى -->
                 <div id="search-page" class="hidden">
                     <div class="breadcrumb">
                         <a href="#" class="touch-feedback" onclick="showSection('main')">الرئيسية</a> / <span>البحث عن محتوى</span>
@@ -1242,7 +1444,6 @@
                     </div>
                 </div>
                 
-                <!-- صفحة التحميل من أي موقع -->
                 <div id="any-site-page" class="hidden">
                     <div class="breadcrumb">
                         <a href="#" class="touch-feedback" onclick="showSection('main')">الرئيسية</a> / <span>تحميل من أي موقع</span>
@@ -1262,14 +1463,11 @@
                                 <span class="btn-icon">👁️</span> معاينة المحتوى
                             </button>
                             
-                            <div id="any-site-preview" class="hidden preview-container">
-                                <!-- سيتم عرض المعاينة هنا -->
-                            </div>
+                            <div id="any-site-preview" class="hidden preview-container"></div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- صفحة تحميل الفيديو -->
                 <div id="video-page" class="hidden">
                     <div class="breadcrumb">
                         <a href="#" class="touch-feedback" onclick="showSection('main')">الرئيسية</a> / <span>تحميل فيديو</span>
@@ -1289,14 +1487,11 @@
                                 <span class="btn-icon">👁️</span> معاينة الفيديو
                             </button>
                             
-                            <div id="video-preview" class="hidden preview-container">
-                                <!-- سيتم عرض معاينة الفيديو هنا -->
-                            </div>
+                            <div id="video-preview" class="hidden preview-container"></div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- صفحة تحميل القرآن -->
                 <div id="quran-page" class="hidden">
                     <div class="breadcrumb">
                         <a href="#" class="touch-feedback" onclick="showSection('main')">الرئيسية</a> / <span>تحميل سور القرآن</span>
@@ -1307,18 +1502,13 @@
                         <div class="card-body">
                             <p>اختر السورة التي ترغب في الاستماع إليها أو تحميلها.</p>
                             
-                            <div class="quran-grid" id="quran-container">
-                                <!-- سيتم عرض سور القرآن هنا -->
-                            </div>
+                            <div class="quran-grid" id="quran-container"></div>
                             
-                            <div id="quran-player" class="hidden preview-container">
-                                <!-- سيتم عرض مشغل القرآن هنا -->
-                            </div>
+                            <div id="quran-player" class="hidden preview-container"></div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- صفحات أخرى -->
                 <div id="music-page" class="hidden">
                     <div class="breadcrumb">
                         <a href="#" class="touch-feedback" onclick="showSection('main')">الرئيسية</a> / <span>تحميل موسيقى</span>
@@ -1338,9 +1528,7 @@
                                 <span class="btn-icon">👁️</span> معاينة الموسيقى
                             </button>
                             
-                            <div id="music-preview" class="hidden preview-container">
-                                <!-- سيتم عرض معاينة الموسيقى هنا -->
-                            </div>
+                            <div id="music-preview" class="hidden preview-container"></div>
                         </div>
                     </div>
                 </div>
@@ -1364,9 +1552,7 @@
                                 <span class="btn-icon">👁️</span> معاينة الصورة
                             </button>
                             
-                            <div id="image-preview" class="hidden preview-container">
-                                <!-- سيتم عرض معاينة الصورة هنا -->
-                            </div>
+                            <div id="image-preview" class="hidden preview-container"></div>
                         </div>
                     </div>
                 </div>
@@ -1390,9 +1576,7 @@
                                 <span class="btn-icon">👁️</span> معاينة الملف
                             </button>
                             
-                            <div id="file-preview" class="hidden preview-container">
-                                <!-- سيتم عرض معاينة الملف هنا -->
-                            </div>
+                            <div id="file-preview" class="hidden preview-container"></div>
                         </div>
                     </div>
                 </div>
@@ -1416,14 +1600,11 @@
                                 <span class="btn-icon">👁️</span> معاينة التطبيق
                             </button>
                             
-                            <div id="app-preview" class="hidden preview-container">
-                                <!-- سيتم عرض معاينة التطبيق هنا -->
-                            </div>
+                            <div id="app-preview" class="hidden preview-container"></div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- صفحة سجل التحميلات -->
                 <div id="history-page" class="hidden">
                     <div class="breadcrumb">
                         <a href="#" class="touch-feedback" onclick="showSection('main')">الرئيسية</a> / <span>سجل التحميلات</span>
@@ -1432,14 +1613,64 @@
                     <div class="card">
                         <div class="card-header">📋 سجل التحميلات الكامل</div>
                         <div class="card-body">
-                            <div id="full-history-list">
-                                <!-- سيتم ملء هذا القسم تلقائياً -->
+                            <div class="history-actions" style="margin-bottom: 20px;">
+                                <button class="btn btn-danger touch-feedback" onclick="clearAllHistory()">
+                                    <span class="btn-icon">🗑️</span> حذف سجل التحميلات بالكامل
+                                </button>
                             </div>
+                            <div id="full-history-list"></div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- صفحة الإعدادات -->
+                <div id="profile-page" class="hidden">
+                    <div class="breadcrumb">
+                        <a href="#" class="touch-feedback" onclick="showSection('main')">الرئيسية</a> / <span>الملف الشخصي</span>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">👤 الملف الشخصي</div>
+                        <div class="card-body">
+                            <div class="profile-header" style="text-align: center; margin-bottom: 30px;">
+                                <div class="user-avatar-large" style="width: 80px; height: 80px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold; margin: 0 auto 15px;" id="profileAvatar">
+                                    ?
+                                </div>
+                                <h3 id="profileName">زائر</h3>
+                                <p id="profileEmail" style="color: var(--text-secondary);">لم يتم تسجيل الدخول</p>
+                            </div>
+                            
+                            <div class="profile-stats" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 30px;">
+                                <div class="stat-item" style="text-align: center; padding: 15px; background: var(--light); border-radius: 10px;">
+                                    <div class="stat-number" style="font-size: 1.5rem; font-weight: bold; color: var(--primary);" id="downloadsCount">0</div>
+                                    <div class="stat-label" style="font-size: 0.8rem; color: var(--text-secondary);">التحميلات</div>
+                                </div>
+                                <div class="stat-item" style="text-align: center; padding: 15px; background: var(--light); border-radius: 10px;">
+                                    <div class="stat-number" style="font-size: 1.5rem; font-weight: bold; color: var(--success);" id="favoritesCount">0</div>
+                                    <div class="stat-label" style="font-size: 0.8rem; color: var(--text-secondary);">المفضلة</div>
+                                </div>
+                                <div class="stat-item" style="text-align: center; padding: 15px; background: var(--light); border-radius: 10px;">
+                                    <div class="stat-number" style="font-size: 1.5rem; font-weight: bold; color: var(--info);" id="historyCount">0</div>
+                                    <div class="stat-label" style="font-size: 0.8rem; color: var(--text-secondary);">في السجل</div>
+                                </div>
+                            </div>
+                            
+                            <h4 style="margin-bottom: 15px;">معلومات الحساب</h4>
+                            <div class="form-group">
+                                <label for="profile-username">اسم المستخدم:</label>
+                                <input type="text" id="profile-username" placeholder="اسم المستخدم">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profile-email">البريد الإلكتروني:</label>
+                                <input type="email" id="profile-email" placeholder="البريد الإلكتروني">
+                            </div>
+                            
+                            <button class="btn btn-success touch-feedback" onclick="updateProfile()">حفظ التغييرات</button>
+                            <button class="btn btn-secondary touch-feedback" onclick="showSection('main')" style="margin-top: 10px;">رجوع</button>
+                        </div>
+                    </div>
+                </div>
+                
                 <div id="settings-page" class="hidden">
                     <div class="breadcrumb">
                         <a href="#" class="touch-feedback" onclick="showSection('main')">الرئيسية</a> / <span>الإعدادات</span>
@@ -1568,14 +1799,12 @@
                 </div>
             </div>
             
-            <!-- Footer -->
             <footer class="app-footer">
                 <div class="developer-info">المطور: عبد الوهاب عبد الواحد الريمي</div>
                 <div class="copyright">© 2025 - أداة التحميل الشامل | جميع الحقوق محفوظة</div>
             </footer>
         </div>
         
-        <!-- Bottom Navigation -->
         <div class="bottom-nav">
             <div class="nav-item active touch-feedback" onclick="showSection('main')">
                 <div class="nav-icon">🏠</div>
@@ -1617,7 +1846,6 @@
     </div>
 
     <script>
-        // بيانات سور القرآن
         const quranList = {
             "الفاتحة": "https://server8.mp3quran.net/afs/001.mp3",
             "البقرة": "https://server8.mp3quran.net/afs/002.mp3",
@@ -1735,7 +1963,6 @@
             "الناس": "https://server8.mp3quran.net/afs/114.mp3"
         };
 
-        // الاقتباسات الملهمة
         const quotes = [
             "🌟 راقب الله في السرّ قبل العلن.",
             "💫 من راقب الله، صلُح حاله واستقامت طريقه.",
@@ -1744,10 +1971,8 @@
             "🌸 يكفيك أن الله يراك، فاستحِ أن يراك على معصية."
         ];
 
-        // سجل التحميلات
         let downloadHistory = JSON.parse(localStorage.getItem('downloadHistory')) || [];
 
-        // الإعدادات
         let appSettings = JSON.parse(localStorage.getItem('appSettings')) || {
             darkMode: false,
             themeColor: 'blue',
@@ -1755,38 +1980,193 @@
             videoQuality: 'medium',
             autoSave: true,
             downloadNotifications: true,
-            appNotifications: true,
-            username: 'عبد الوهاب',
-            email: 'user@example.com'
+            appNotifications: true
         };
 
-        // عناصر شاشة الترحيب
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
+
         const welcomeScreen = document.getElementById('welcomeScreen');
         const enterBtn = document.getElementById('enterBtn');
         const quoteText = document.getElementById('quoteText');
 
-        // عرض اقتباس عشوائي عند تحميل الصفحة
+        const authScreen = document.getElementById('authScreen');
+        const loginTab = document.getElementById('loginTab');
+        const registerTab = document.getElementById('registerTab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const showRegister = document.getElementById('showRegister');
+        const showLogin = document.getElementById('showLogin');
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+
         function showRandomQuote() {
             const randomIndex = Math.floor(Math.random() * quotes.length);
             quoteText.textContent = quotes[randomIndex];
         }
 
-        // الدخول إلى التطبيق
         function enterApp() {
             welcomeScreen.classList.add('hidden');
-            // تحميل الإعدادات بعد الدخول
-            loadSettings();
+            
+            if (currentUser) {
+                updateUserInterface();
+            } else {
+                authScreen.classList.remove('hidden');
+            }
         }
 
-        // إدارة القائمة الجانبية
+        function switchToLogin() {
+            loginTab.classList.add('active');
+            registerTab.classList.remove('active');
+            loginForm.classList.add('active');
+            registerForm.classList.remove('active');
+        }
+
+        function switchToRegister() {
+            registerTab.classList.add('active');
+            loginTab.classList.remove('active');
+            registerForm.classList.add('active');
+            loginForm.classList.remove('active');
+        }
+
+        function login() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            if (!email || !password) {
+                alert('يرجى ملء جميع الحقول');
+                return;
+            }
+            
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                currentUser = user;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                authScreen.classList.add('hidden');
+                updateUserInterface();
+                alert('تم تسجيل الدخول بنجاح!');
+            } else {
+                alert('البريد الإلكتروني أو كلمة المرور غير صحيحة');
+            }
+        }
+
+        function register() {
+            const username = document.getElementById('register-username').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+            
+            if (!username || !email || !password || !confirmPassword) {
+                alert('يرجى ملء جميع الحقول');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('كلمات المرور غير متطابقة');
+                return;
+            }
+            
+            if (password.length < 6) {
+                alert('كلمة المرور يجب أن تكون 6 أحرف على الأقل');
+                return;
+            }
+            
+            const existingUser = users.find(u => u.email === email);
+            if (existingUser) {
+                alert('هذا البريد الإلكتروني مستخدم بالفعل');
+                return;
+            }
+            
+            const newUser = {
+                id: Date.now(),
+                username: username,
+                email: email,
+                password: password,
+                joinDate: new Date().toLocaleDateString('ar-EG'),
+                downloads: 0,
+                favorites: 0
+            };
+            
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            currentUser = newUser;
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            
+            authScreen.classList.add('hidden');
+            updateUserInterface();
+            alert('تم إنشاء الحساب بنجاح!');
+        }
+
+        function updateUserInterface() {
+            if (currentUser) {
+                document.getElementById('userName').textContent = currentUser.username;
+                document.getElementById('userAvatar').textContent = currentUser.username.charAt(0);
+                
+                document.getElementById('profileName').textContent = currentUser.username;
+                document.getElementById('profileEmail').textContent = currentUser.email;
+                document.getElementById('profileAvatar').textContent = currentUser.username.charAt(0);
+                document.getElementById('profile-username').value = currentUser.username;
+                document.getElementById('profile-email').value = currentUser.email;
+                
+                document.getElementById('downloadsCount').textContent = currentUser.downloads || 0;
+                document.getElementById('favoritesCount').textContent = currentUser.favorites || 0;
+                document.getElementById('historyCount').textContent = downloadHistory.length;
+            }
+        }
+
+        function updateProfile() {
+            if (!currentUser) return;
+            
+            const username = document.getElementById('profile-username').value;
+            const email = document.getElementById('profile-email').value;
+            
+            if (!username || !email) {
+                alert('يرجى ملء جميع الحقول');
+                return;
+            }
+            
+            currentUser.username = username;
+            currentUser.email = email;
+            
+            const userIndex = users.findIndex(u => u.id === currentUser.id);
+            if (userIndex !== -1) {
+                users[userIndex] = currentUser;
+                localStorage.setItem('users', JSON.stringify(users));
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            }
+            
+            updateUserInterface();
+            alert('تم تحديث الملف الشخصي بنجاح!');
+        }
+
+        function logout() {
+            if (confirm('هل أنت متأكد من أنك تريد تسجيل الخروج؟')) {
+                currentUser = null;
+                localStorage.removeItem('currentUser');
+                location.reload();
+            }
+        }
+
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');
         const menuToggle = document.querySelector('.menu-toggle');
         const closeSidebar = document.querySelector('.close-sidebar');
         const mainContent = document.getElementById('mainContent');
         const themeToggle = document.getElementById('themeToggle');
+        const userProfile = document.getElementById('userProfile');
+        const userMenu = document.getElementById('userMenu');
 
-        // تهيئة السحب للقائمة الجانبية
+        userProfile.addEventListener('click', function(e) {
+            e.stopPropagation();
+            userMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function() {
+            userMenu.classList.remove('active');
+        });
+
         let startX = 0;
         let currentX = 0;
         let isDragging = false;
@@ -1832,30 +2212,20 @@
         closeSidebar.addEventListener('click', closeSidebarMenu);
         overlay.addEventListener('click', closeSidebarMenu);
 
-        // تهيئة السحب بعد تحميل DOM
-        document.addEventListener('DOMContentLoaded', function() {
-            initSwipe();
-        });
-
-        // تبديل وضع الليل/النهار
         themeToggle.addEventListener('click', () => {
             toggleDarkMode();
         });
 
-        // تبديل وضع الليل/النهار
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
             const isDarkMode = document.body.classList.contains('dark-mode');
             themeToggle.textContent = isDarkMode ? '☀️' : '🌙';
             
-            // حفظ الإعداد
             appSettings.darkMode = isDarkMode;
             localStorage.setItem('appSettings', JSON.stringify(appSettings));
         }
 
-        // تحميل الإعدادات
         function loadSettings() {
-            // تطبيق وضع الليل/النهار
             if (appSettings.darkMode) {
                 document.body.classList.add('dark-mode');
                 themeToggle.textContent = '☀️';
@@ -1864,7 +2234,6 @@
                 themeToggle.textContent = '🌙';
             }
             
-            // تطبيق إعدادات صفحة الإعدادات
             document.getElementById('darkModeToggle').checked = appSettings.darkMode;
             document.getElementById('theme-color').value = appSettings.themeColor;
             document.getElementById('download-location').value = appSettings.downloadLocation;
@@ -1872,11 +2241,8 @@
             document.getElementById('autoSaveToggle').checked = appSettings.autoSave;
             document.getElementById('downloadNotificationsToggle').checked = appSettings.downloadNotifications;
             document.getElementById('appNotificationsToggle').checked = appSettings.appNotifications;
-            document.getElementById('username').value = appSettings.username;
-            document.getElementById('email').value = appSettings.email;
         }
 
-        // حفظ الإعدادات
         function saveSettings() {
             appSettings.darkMode = document.getElementById('darkModeToggle').checked;
             appSettings.themeColor = document.getElementById('theme-color').value;
@@ -1885,19 +2251,14 @@
             appSettings.autoSave = document.getElementById('autoSaveToggle').checked;
             appSettings.downloadNotifications = document.getElementById('downloadNotificationsToggle').checked;
             appSettings.appNotifications = document.getElementById('appNotificationsToggle').checked;
-            appSettings.username = document.getElementById('username').value;
-            appSettings.email = document.getElementById('email').value;
             
             localStorage.setItem('appSettings', JSON.stringify(appSettings));
             
-            // تطبيق التغييرات
             loadSettings();
             
-            // إظهار رسالة نجاح
             alert('تم حفظ الإعدادات بنجاح!');
         }
 
-        // استعادة الإعدادات الافتراضية
         function resetSettings() {
             if (confirm('هل أنت متأكد من أنك تريد استعادة الإعدادات الافتراضية؟')) {
                 appSettings = {
@@ -1907,9 +2268,7 @@
                     videoQuality: 'medium',
                     autoSave: true,
                     downloadNotifications: true,
-                    appNotifications: true,
-                    username: 'عبد الوهاب',
-                    email: 'user@example.com'
+                    appNotifications: true
                 };
                 
                 localStorage.setItem('appSettings', JSON.stringify(appSettings));
@@ -1918,53 +2277,46 @@
             }
         }
 
-        // عرض وإخفاء الأقسام
         function showSection(sectionId) {
-            // إخفاء جميع الأقسام
             document.querySelectorAll('[id$="-page"]').forEach(section => {
                 section.classList.add('hidden');
             });
             
-            // إظهار القسم المطلوب
             document.getElementById(`${sectionId}-page`).classList.remove('hidden');
             
-            // تحديث القائمة الجانبية النشطة
             document.querySelectorAll('.menu-item').forEach(item => {
                 item.classList.remove('active');
             });
             
-            // تحديث القائمة السفلية النشطة
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('active');
             });
             
-            // إغلاق القائمة الجانبية على الأجهزة المحمولة
             if (window.innerWidth <= 768) {
                 closeSidebarMenu();
             }
             
-            // إذا كان القسم هو القرآن، نقوم بتحميل قائمة السور
             if (sectionId === 'quran') {
                 loadQuranList();
             }
             
-            // إذا كان القسم هو الرئيسية، نقوم بتحديث سجل التحميلات
             if (sectionId === 'main') {
                 updateDownloadHistory();
             }
             
-            // إذا كان القسم هو سجل التحميلات، نقوم بعرض السجل الكامل
             if (sectionId === 'history') {
                 updateFullHistory();
             }
             
-            // إذا كان القسم هو الإعدادات، نقوم بتحميل الإعدادات
             if (sectionId === 'settings') {
                 loadSettings();
             }
+            
+            if (sectionId === 'profile') {
+                updateUserInterface();
+            }
         }
         
-        // تحميل قائمة سور القرآن
         function loadQuranList() {
             const container = document.getElementById('quran-container');
             container.innerHTML = '';
@@ -1978,37 +2330,36 @@
             }
         }
         
-        // تشغيل سورة القرآن
         function playQuran(name, url) {
             const playerContainer = document.getElementById('quran-player');
             playerContainer.classList.remove('hidden');
             
             playerContainer.innerHTML = `
                 <h3>${name}</h3>
-                <audio controls style="width: 100%; margin: 15px 0;">
-                    <source src="${url}" type="audio/mpeg">
-                    المتصفح لا يدعم تشغيل الصوت
-                </audio>
+                <div class="media-player">
+                    <audio controls style="width: 100%;">
+                        <source src="${url}" type="audio/mpeg">
+                        المتصفح لا يدعم تشغيل الصوت
+                    </audio>
+                </div>
                 <p>جاري تحميل السورة...</p>
                 <div class="progress-bar">
                     <div class="progress" id="quran-progress"></div>
                 </div>
-                <button class="btn btn-success touch-feedback" onclick="downloadFile('${url}', '${name}.mp3', 'audio')">تحميل السورة</button>
+                <div class="player-controls">
+                    <button class="btn btn-success touch-feedback" onclick="downloadFile('${url}', '${name}.mp3', 'audio')">تحميل السورة</button>
+                </div>
             `;
             
-            // محاكاة تقدم التحميل
             simulateProgress('quran-progress');
             
-            // تمرير إلى قسم المعاينة
             playerContainer.scrollIntoView({ behavior: 'smooth' });
         }
         
-        // البحث عن المحتوى
         function performSearch() {
             const query = document.getElementById('search-input').value;
             if (!query) return;
             
-            // عرض تحميل
             document.getElementById('search-results').classList.remove('hidden');
             document.getElementById('results-container').innerHTML = `
                 <div class="loading">
@@ -2017,7 +2368,6 @@
                 </div>
             `;
             
-            // محاكاة البحث (في تطبيق حقيقي، سيكون هناك اتصال بالخادم)
             setTimeout(() => {
                 const results = [
                     {title: "أغاني مصرية قديمة", type: "music", description: "مجموعة من الأغاني المصرية القديمة"},
@@ -2031,7 +2381,6 @@
             }, 1500);
         }
         
-        // عرض نتائج البحث
         function displaySearchResults(results) {
             const container = document.getElementById('results-container');
             container.innerHTML = '';
@@ -2056,12 +2405,10 @@
             });
         }
         
-        // معاينة المحتوى من نتائج البحث
         function previewFromSearch(type) {
             alert(`سيتم معاينة محتوى من نوع: ${type}\n\nفي التطبيق الكامل، سيتم تحميل المحتوى الحقيقي للعرض.`);
         }
         
-        // معالجة التحميل من أي موقع
         function handleAnySite() {
             const url = document.getElementById('any-site-url').value;
             if (!url) return;
@@ -2075,7 +2422,6 @@
                 </div>
             `;
             
-            // محاكاة المعاينة (في تطبيق حقيقي، سيكون هناك اتصال بالخادم)
             setTimeout(() => {
                 previewContainer.innerHTML = `
                     <h3>🎬 معاينة المحتوى</h3>
@@ -2091,12 +2437,10 @@
                     <button class="btn btn-success touch-feedback" onclick="downloadFile('${url}', 'content.mp4', 'video')">تحميل المحتوى</button>
                 `;
                 
-                // محاكاة تقدم التحميل
                 simulateProgress('site-progress');
             }, 2000);
         }
         
-        // معاينة الفيديو
         function previewVideo() {
             const url = document.getElementById('video-url').value;
             if (!url) return;
@@ -2110,26 +2454,31 @@
                 </div>
             `;
             
-            // محاكاة المعاينة (في تطبيق حقيقي، سيكون هناك اتصال بالخادم)
             setTimeout(() => {
                 previewContainer.innerHTML = `
                     <h3>🎬 معاينة الفيديو</h3>
                     <p>تم التعرف على الرابط: ${url}</p>
+                    <div class="media-player">
+                        <video controls style="width: 100%; max-height: 400px;">
+                            <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4">
+                            المتصفح لا يدعم تشغيل الفيديو
+                        </video>
+                    </div>
                     <div class="alert alert-info">
-                        في التطبيق الكامل، سيتم عرض معاينة حقيقية للفيديو هنا.
+                        هذا فيديو تجريبي للعرض فقط. في التطبيق الكامل، سيتم عرض الفيديو الحقيقي.
                     </div>
                     <div class="progress-bar">
                         <div class="progress" id="video-progress"></div>
                     </div>
-                    <button class="btn btn-success touch-feedback" onclick="downloadFile('${url}', 'video.mp4', 'video')">تحميل الفيديو</button>
+                    <div class="player-controls">
+                        <button class="btn btn-success touch-feedback" onclick="downloadFile('${url}', 'video.mp4', 'video')">تحميل الفيديو</button>
+                    </div>
                 `;
                 
-                // محاكاة تقدم التحميل
                 simulateProgress('video-progress');
             }, 2000);
         }
         
-        // معاينة الموسيقى
         function previewMusic() {
             const url = document.getElementById('music-url').value;
             if (!url) return;
@@ -2143,26 +2492,31 @@
                 </div>
             `;
             
-            // محاكاة المعاينة (في تطبيق حقيقي، سيكون هناك اتصال بالخادم)
             setTimeout(() => {
                 previewContainer.innerHTML = `
                     <h3>🎵 معاينة الموسيقى</h3>
                     <p>تم التعرف على الرابط: ${url}</p>
+                    <div class="media-player">
+                        <audio controls style="width: 100%;">
+                            <source src="https://sample-videos.com/audio/mp3/SampleAudio_0.4mb.mp3" type="audio/mpeg">
+                            المتصفح لا يدعم تشغيل الصوت
+                        </audio>
+                    </div>
                     <div class="alert alert-info">
-                        في التطبيق الكامل، سيتم عرض معاينة حقيقية للموسيقى هنا.
+                        هذا صوت تجريبي للعرض فقط. في التطبيق الكامل، سيتم عرض الصوت الحقيقي.
                     </div>
                     <div class="progress-bar">
                         <div class="progress" id="music-progress"></div>
                     </div>
-                    <button class="btn btn-success touch-feedback" onclick="downloadFile('${url}', 'music.mp3', 'audio')">تحميل الموسيقى</button>
+                    <div class="player-controls">
+                        <button class="btn btn-success touch-feedback" onclick="downloadFile('${url}', 'music.mp3', 'audio')">تحميل الموسيقى</button>
+                    </div>
                 `;
                 
-                // محاكاة تقدم التحميل
                 simulateProgress('music-progress');
             }, 2000);
         }
         
-        // معاينة الصورة
         function previewImage() {
             const url = document.getElementById('image-url').value;
             if (!url) return;
@@ -2176,13 +2530,13 @@
                 </div>
             `;
             
-            // محاكاة المعاينة (في تطبيق حقيقي، سيكون هناك اتصال بالخادم)
             setTimeout(() => {
                 previewContainer.innerHTML = `
                     <h3>🖼️ معاينة الصورة</h3>
                     <p>تم التعرف على الرابط: ${url}</p>
+                    <img src="https://picsum.photos/600/400" alt="صورة تجريبية" class="preview-image">
                     <div class="alert alert-info">
-                        في التطبيق الكامل، سيتم عرض معاينة حقيقية للصورة هنا.
+                        هذه صورة تجريبية للعرض فقط. في التطبيق الكامل، سيتم عرض الصورة الحقيقية.
                     </div>
                     <div class="progress-bar">
                         <div class="progress" id="image-progress"></div>
@@ -2190,12 +2544,10 @@
                     <button class="btn btn-success touch-feedback" onclick="downloadFile('${url}', 'image.jpg', 'image')">تحميل الصورة</button>
                 `;
                 
-                // محاكاة تقدم التحميل
                 simulateProgress('image-progress');
             }, 2000);
         }
         
-        // معاينة الملف
         function previewFile() {
             const url = document.getElementById('file-url').value;
             if (!url) return;
@@ -2209,7 +2561,6 @@
                 </div>
             `;
             
-            // محاكاة المعاينة (في تطبيق حقيقي، سيكون هناك اتصال بالخادم)
             setTimeout(() => {
                 previewContainer.innerHTML = `
                     <h3>📂 معاينة الملف</h3>
@@ -2223,12 +2574,10 @@
                     <button class="btn btn-success touch-feedback" onclick="downloadFile('${url}', 'file.pdf', 'document')">تحميل الملف</button>
                 `;
                 
-                // محاكاة تقدم التحميل
                 simulateProgress('file-progress');
             }, 2000);
         }
         
-        // معاينة التطبيق
         function previewApp() {
             const url = document.getElementById('app-url').value;
             if (!url) return;
@@ -2242,7 +2591,6 @@
                 </div>
             `;
             
-            // محاكاة المعاينة (في تطبيق حقيقي، سيكون هناك اتصال بالخادم)
             setTimeout(() => {
                 previewContainer.innerHTML = `
                     <h3>📱 معاينة التطبيق</h3>
@@ -2256,12 +2604,10 @@
                     <button class="btn btn-success touch-feedback" onclick="downloadFile('${url}', 'app.apk', 'application')">تحميل التطبيق</button>
                 `;
                 
-                // محاكاة تقدم التحميل
                 simulateProgress('app-progress');
             }, 2000);
         }
         
-        // محاكاة تقدم التحميل
         function simulateProgress(progressId) {
             const progressBar = document.getElementById(progressId);
             let width = 0;
@@ -2276,10 +2622,9 @@
             }, 200);
         }
         
-        // تحميل الملف (وظيفة محاكاة)
         function downloadFile(url, filename, type) {
-            // إضافة إلى سجل التحميلات
             const downloadItem = {
+                id: Date.now(),
                 name: filename,
                 type: type,
                 url: url,
@@ -2291,19 +2636,48 @@
                 downloadHistory = downloadHistory.slice(0, 10);
             }
             
-            // حفظ في التخزين المحلي
             localStorage.setItem('downloadHistory', JSON.stringify(downloadHistory));
+            
+            if (currentUser) {
+                currentUser.downloads = (currentUser.downloads || 0) + 1;
+                const userIndex = users.findIndex(u => u.id === currentUser.id);
+                if (userIndex !== -1) {
+                    users[userIndex] = currentUser;
+                    localStorage.setItem('users', JSON.stringify(users));
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    updateUserInterface();
+                }
+            }
             
             alert(`سيبدأ تحميل الملف: ${filename}\nمن الرابط: ${url}\n\nفي التطبيق الكامل، سيتم تنزيل الملف فعلياً.`);
             
-            // في تطبيق حقيقي، سيتم تنزيل الملف هنا
-            // window.location.href = url;
-            
-            // تحديث سجل التحميلات
             updateDownloadHistory();
         }
         
-        // تحديث سجل التحميلات في الصفحة الرئيسية
+        function deleteHistoryItem(id) {
+            if (confirm('هل أنت متأكد من أنك تريد حذف هذا العنصر من سجل التحميلات؟')) {
+                downloadHistory = downloadHistory.filter(item => item.id !== id);
+                localStorage.setItem('downloadHistory', JSON.stringify(downloadHistory));
+                
+                updateDownloadHistory();
+                updateFullHistory();
+                
+                alert('تم حذف العنصر بنجاح!');
+            }
+        }
+        
+        function clearAllHistory() {
+            if (confirm('هل أنت متأكد من أنك تريد حذف سجل التحميلات بالكامل؟ لا يمكن التراجع عن هذا الإجراء.')) {
+                downloadHistory = [];
+                localStorage.setItem('downloadHistory', JSON.stringify(downloadHistory));
+                
+                updateDownloadHistory();
+                updateFullHistory();
+                
+                alert('تم حذف سجل التحميلات بالكامل بنجاح!');
+            }
+        }
+        
         function updateDownloadHistory() {
             const historyList = document.getElementById('download-history-list');
             historyList.innerHTML = '';
@@ -2333,14 +2707,16 @@
                             <div style="font-size: 0.8rem; color: #666;">${item.date}</div>
                         </div>
                     </div>
-                    <button class="btn btn-primary touch-feedback" onclick="downloadFile('${item.url}', '${item.name}', '${item.type}')">إعادة التحميل</button>
+                    <div class="actions">
+                        <button class="btn btn-primary touch-feedback" onclick="downloadFile('${item.url}', '${item.name}', '${item.type}')">إعادة التحميل</button>
+                        <button class="btn btn-danger touch-feedback" onclick="deleteHistoryItem(${item.id})">حذف</button>
+                    </div>
                 `;
                 
                 historyList.appendChild(historyItem);
             });
         }
         
-        // تحديث سجل التحميلات الكامل
         function updateFullHistory() {
             const historyList = document.getElementById('full-history-list');
             historyList.innerHTML = '';
@@ -2368,33 +2744,39 @@
                             <div style="font-size: 0.8rem; color: #666;">${item.date}</div>
                         </div>
                     </div>
-                    <button class="btn btn-primary touch-feedback" onclick="downloadFile('${item.url}', '${item.name}', '${item.type}')">إعادة التحميل</button>
+                    <div class="actions">
+                        <button class="btn btn-primary touch-feedback" onclick="downloadFile('${item.url}', '${item.name}', '${item.type}')">إعادة التحميل</button>
+                        <button class="btn btn-danger touch-feedback" onclick="deleteHistoryItem(${item.id})">حذف</button>
+                    </div>
                 `;
                 
                 historyList.appendChild(historyItem);
             });
         }
         
-        // إخفاء العناصر التي تحتوي على class="hidden"
         document.addEventListener('DOMContentLoaded', function() {
-            // إخفاء جميع الصفحات ما عدا الرئيسية
             document.querySelectorAll('[id$="-page"]').forEach(section => {
                 if (section.id !== 'main-page') {
                     section.classList.add('hidden');
                 }
             });
             
-            // عرض اقتباس عشوائي
             showRandomQuote();
             
-            // إضافة حدث للزر للدخول إلى التطبيق
             enterBtn.addEventListener('click', enterApp);
+            loginTab.addEventListener('click', switchToLogin);
+            registerTab.addEventListener('click', switchToRegister);
+            showRegister.addEventListener('click', switchToRegister);
+            showLogin.addEventListener('click', switchToLogin);
+            loginBtn.addEventListener('click', login);
+            registerBtn.addEventListener('click', register);
             
-            // تحميل الإعدادات (سيتم تحميلها بعد الدخول)
-            // تحديث سجل التحميلات
+            initSwipe();
+            
+            loadSettings();
+            
             updateDownloadHistory();
 
-            // منع التكبير/التصغير على الهواتف
             document.addEventListener('touchstart', function(e) {
                 if (e.touches.length > 1) {
                     e.preventDefault();
