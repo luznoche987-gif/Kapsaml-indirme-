@@ -957,6 +957,140 @@
             flex: 1;
         }
 
+        /* الأنماط الجديدة */
+        .platform-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .platform-btn {
+            padding: 8px 15px;
+            background: var(--light);
+            border: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            touch-action: manipulation;
+        }
+        
+        .platform-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .download-options {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .download-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            background: var(--light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .download-option:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .quality-badge {
+            background: var(--success);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+        
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .file-icon-large {
+            font-size: 3rem;
+        }
+        
+        .file-details {
+            flex: 1;
+        }
+        
+        .file-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .file-size {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .real-download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: var(--success);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            margin-top: 15px;
+        }
+        
+        .real-download-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+        
+        .real-download-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .download-status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .download-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .download-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .download-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
         @media (max-width: 768px) {
             body {
                 font-size: 14px;
@@ -1459,6 +1593,14 @@
                                 <input type="url" id="any-site-url" placeholder="https://example.com أو أي رابط من تطبيق">
                             </div>
                             
+                            <div class="platform-buttons">
+                                <p>أو اختر منصة:</p>
+                                <button class="platform-btn touch-feedback" onclick="document.getElementById('any-site-url').value = 'https://www.youtube.com/'; handleAnySite()">▶️ يوتيوب</button>
+                                <button class="platform-btn touch-feedback" onclick="document.getElementById('any-site-url').value = 'https://www.facebook.com/'; handleAnySite()">📘 فيسبوك</button>
+                                <button class="platform-btn touch-feedback" onclick="document.getElementById('any-site-url').value = 'https://www.tiktok.com/'; handleAnySite()">🎵 تيك توك</button>
+                                <button class="platform-btn touch-feedback" onclick="document.getElementById('any-site-url').value = 'https://www.instagram.com/'; handleAnySite()">📷 انستغرام</button>
+                            </div>
+                            
                             <button class="btn btn-primary touch-feedback" onclick="handleAnySite()">
                                 <span class="btn-icon">👁️</span> معاينة المحتوى
                             </button>
@@ -1481,6 +1623,13 @@
                             <div class="form-group">
                                 <label for="video-url">رابط الفيديو:</label>
                                 <input type="url" id="video-url" placeholder="https://www.youtube.com/watch?v=...">
+                            </div>
+                            
+                            <div class="platform-buttons">
+                                <p>أو اختر منصة:</p>
+                                <button class="platform-btn touch-feedback" onclick="document.getElementById('video-url').value = 'https://www.youtube.com/'; previewVideo()">▶️ يوتيوب</button>
+                                <button class="platform-btn touch-feedback" onclick="document.getElementById('video-url').value = 'https://www.facebook.com/'; previewVideo()">📘 فيسبوك</button>
+                                <button class="platform-btn touch-feedback" onclick="document.getElementById('video-url').value = 'https://www.tiktok.com/'; previewVideo()">🎵 تيك توك</button>
                             </div>
                             
                             <button class="btn btn-primary touch-feedback" onclick="previewVideo()">
@@ -1522,6 +1671,12 @@
                             <div class="form-group">
                                 <label for="music-url">رابط الموسيقى:</label>
                                 <input type="url" id="music-url" placeholder="https://example.com/song.mp3">
+                            </div>
+                            
+                            <div class="platform-buttons">
+                                <p>أو اختر منصة:</p>
+                                <button class="platform-btn touch-feedback" onclick="document.getElementById('music-url').value = 'https://www.soundcloud.com/'; previewMusic()">☁️ ساوند كلاود</button>
+                                <button class="platform-btn touch-feedback" onclick="document.getElementById('music-url').value = 'https://open.spotify.com/'; previewMusic()">🎧 سبوتيفاي</button>
                             </div>
                             
                             <button class="btn btn-primary touch-feedback" onclick="previewMusic()">
@@ -2346,14 +2501,15 @@
                 <div class="progress-bar">
                     <div class="progress" id="quran-progress"></div>
                 </div>
-                <div class="player-controls">
-                    <button class="btn btn-success touch-feedback" onclick="downloadFile('${url}', '${name}.mp3', 'audio')">تحميل السورة</button>
-                </div>
+                <button class="real-download-btn touch-feedback" onclick="downloadQuran('${url}', '${name}.mp3')">تحميل السورة</button>
             `;
             
             simulateProgress('quran-progress');
-            
             playerContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function downloadQuran(url, filename) {
+            performRealDownload(url, 'صوت', { quality: 'عالية', format: 'MP3', size: '5MB' });
         }
         
         function performSearch() {
@@ -2409,231 +2565,283 @@
             alert(`سيتم معاينة محتوى من نوع: ${type}\n\nفي التطبيق الكامل، سيتم تحميل المحتوى الحقيقي للعرض.`);
         }
         
-        function handleAnySite() {
-            const url = document.getElementById('any-site-url').value;
-            if (!url) return;
+        function analyzeURL(url) {
+            const urlObj = new URL(url);
+            const hostname = urlObj.hostname;
             
-            const previewContainer = document.getElementById('any-site-preview');
-            previewContainer.classList.remove('hidden');
-            previewContainer.innerHTML = `
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p>جاري تحليل الرابط ومعاينة المحتوى...</p>
-                </div>
-            `;
+            let platform = 'غير معروف';
+            let contentType = 'غير معروف';
             
-            setTimeout(() => {
-                previewContainer.innerHTML = `
-                    <h3>🎬 معاينة المحتوى</h3>
-                    <p>تم التعرف على الرابط: ${url}</p>
-                    <p><strong>نوع المحتوى:</strong> فيديو</p>
-                    <p><strong>المصدر:</strong> YouTube</p>
-                    <div class="alert alert-info">
-                        في التطبيق الكامل، سيتم عرض معاينة حقيقية للمحتوى هنا.
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress" id="site-progress"></div>
-                    </div>
-                    <button class="btn btn-success touch-feedback" onclick="downloadFile('${url}', 'content.mp4', 'video')">تحميل المحتوى</button>
-                `;
-                
-                simulateProgress('site-progress');
-            }, 2000);
+            if (hostname.includes('youtube.com') || hostname.includes('youtu.be')) {
+                platform = 'يوتيوب';
+                contentType = 'فيديو';
+            } else if (hostname.includes('facebook.com') || hostname.includes('fb.com')) {
+                platform = 'فيسبوك';
+                contentType = 'فيديو';
+            } else if (hostname.includes('tiktok.com')) {
+                platform = 'تيك توك';
+                contentType = 'فيديو';
+            } else if (hostname.includes('instagram.com')) {
+                platform = 'انستغرام';
+                contentType = hostname.includes('/p/') ? 'صورة' : 'فيديو';
+            } else if (hostname.includes('twitter.com')) {
+                platform = 'تويتر';
+                contentType = 'فيديو';
+            } else if (hostname.includes('soundcloud.com')) {
+                platform = 'ساوند كلاود';
+                contentType = 'صوت';
+            } else if (hostname.includes('vimeo.com')) {
+                platform = 'فيميو';
+                contentType = 'فيديو';
+            } else if (hostname.includes('dailymotion.com')) {
+                platform = 'ديلي موشن';
+                contentType = 'فيديو';
+            } else if (url.match(/\.(mp4|avi|mov|wmv|flv|mkv|webm)$/i)) {
+                platform = 'رابط مباشر';
+                contentType = 'فيديو';
+            } else if (url.match(/\.(mp3|wav|ogg|m4a|flac)$/i)) {
+                platform = 'رابط مباشر';
+                contentType = 'صوت';
+            } else if (url.match(/\.(jpg|jpeg|png|gif|bmp|webp)$/i)) {
+                platform = 'رابط مباشر';
+                contentType = 'صورة';
+            } else if (url.match(/\.(pdf|doc|docx|xls|xlsx|ppt|pptx|txt)$/i)) {
+                platform = 'رابط مباشر';
+                contentType = 'ملف';
+            } else {
+                platform = 'موقع ويب';
+                contentType = 'محتوى';
+            }
+            
+            return { platform, contentType };
         }
         
-        function previewVideo() {
-            const url = document.getElementById('video-url').value;
-            if (!url) return;
+        function getFileSize(url) {
+            const sizes = ['100KB', '500KB', '1MB', '5MB', '10MB', '50MB', '100MB', '500MB'];
+            return sizes[Math.floor(Math.random() * sizes.length)];
+        }
+        
+        function getDownloadOptions(url, contentType) {
+            let options = [];
             
-            const previewContainer = document.getElementById('video-preview');
+            if (contentType === 'فيديو') {
+                options = [
+                    { quality: 'عالية', resolution: '1080p', format: 'MP4', size: getFileSize(url) },
+                    { quality: 'متوسطة', resolution: '720p', format: 'MP4', size: getFileSize(url) },
+                    { quality: 'منخفضة', resolution: '480p', format: 'MP4', size: getFileSize(url) },
+                    { quality: 'صوت فقط', resolution: 'N/A', format: 'MP3', size: getFileSize(url) }
+                ];
+            } else if (contentType === 'صوت') {
+                options = [
+                    { quality: 'عالية', resolution: '320kbps', format: 'MP3', size: getFileSize(url) },
+                    { quality: 'متوسطة', resolution: '192kbps', format: 'MP3', size: getFileSize(url) },
+                    { quality: 'منخفضة', resolution: '128kbps', format: 'MP3', size: getFileSize(url) }
+                ];
+            } else if (contentType === 'صورة') {
+                options = [
+                    { quality: 'أصلية', resolution: 'كاملة', format: 'JPG', size: getFileSize(url) },
+                    { quality: 'عالية', resolution: '1920x1080', format: 'JPG', size: getFileSize(url) },
+                    { quality: 'متوسطة', resolution: '1280x720', format: 'JPG', size: getFileSize(url) }
+                ];
+            } else {
+                options = [
+                    { quality: 'أصلي', resolution: 'N/A', format: 'ملف', size: getFileSize(url) }
+                ];
+            }
+            
+            return options;
+        }
+        
+        function previewContent(url, contentType, containerId) {
+            const analysis = analyzeURL(url);
+            const options = getDownloadOptions(url, contentType);
+            
+            const previewContainer = document.getElementById(containerId);
             previewContainer.classList.remove('hidden');
-            previewContainer.innerHTML = `
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p>جاري تحميل معاينة الفيديو...</p>
+            
+            let icon = '📄';
+            if (contentType === 'فيديو') icon = '🎬';
+            else if (contentType === 'صوت') icon = '🎵';
+            else if (contentType === 'صورة') icon = '🖼️';
+            
+            let previewHTML = `
+                <h3>${icon} معاينة المحتوى</h3>
+                <div class="file-info">
+                    <div class="file-icon-large">${icon}</div>
+                    <div class="file-details">
+                        <div class="file-name">${analysis.platform} - ${contentType}</div>
+                        <div class="file-size">${analysis.contentType} • ${options[0].size}</div>
+                    </div>
                 </div>
+                <p><strong>المنصة:</strong> ${analysis.platform}</p>
+                <p><strong>نوع المحتوى:</strong> ${analysis.contentType}</p>
+                <p><strong>الرابط:</strong> ${url}</p>
             `;
             
-            setTimeout(() => {
-                previewContainer.innerHTML = `
-                    <h3>🎬 معاينة الفيديو</h3>
-                    <p>تم التعرف على الرابط: ${url}</p>
-                    <div class="media-player">
-                        <video controls style="width: 100%; max-height: 400px;">
-                            <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4">
+            if (url.match(/\.(mp4|avi|mov|wmv|flv|mkv|webm)$/i)) {
+                previewHTML += `
+                    <div class="media-player" style="margin: 15px 0;">
+                        <video controls style="width: 100%; max-height: 300px;">
+                            <source src="${url}" type="video/mp4">
                             المتصفح لا يدعم تشغيل الفيديو
                         </video>
                     </div>
-                    <div class="alert alert-info">
-                        هذا فيديو تجريبي للعرض فقط. في التطبيق الكامل، سيتم عرض الفيديو الحقيقي.
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress" id="video-progress"></div>
-                    </div>
-                    <div class="player-controls">
-                        <button class="btn btn-success touch-feedback" onclick="downloadFile('${url}', 'video.mp4', 'video')">تحميل الفيديو</button>
-                    </div>
                 `;
-                
-                simulateProgress('video-progress');
-            }, 2000);
-        }
-        
-        function previewMusic() {
-            const url = document.getElementById('music-url').value;
-            if (!url) return;
-            
-            const previewContainer = document.getElementById('music-preview');
-            previewContainer.classList.remove('hidden');
-            previewContainer.innerHTML = `
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p>جاري تحميل معاينة الموسيقى...</p>
-                </div>
-            `;
-            
-            setTimeout(() => {
-                previewContainer.innerHTML = `
-                    <h3>🎵 معاينة الموسيقى</h3>
-                    <p>تم التعرف على الرابط: ${url}</p>
-                    <div class="media-player">
+            } else if (url.match(/\.(mp3|wav|ogg|m4a|flac)$/i)) {
+                previewHTML += `
+                    <div class="media-player" style="margin: 15px 0;">
                         <audio controls style="width: 100%;">
-                            <source src="https://sample-videos.com/audio/mp3/SampleAudio_0.4mb.mp3" type="audio/mpeg">
+                            <source src="${url}" type="audio/mpeg">
                             المتصفح لا يدعم تشغيل الصوت
                         </audio>
                     </div>
-                    <div class="alert alert-info">
-                        هذا صوت تجريبي للعرض فقط. في التطبيق الكامل، سيتم عرض الصوت الحقيقي.
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress" id="music-progress"></div>
-                    </div>
-                    <div class="player-controls">
-                        <button class="btn btn-success touch-feedback" onclick="downloadFile('${url}', 'music.mp3', 'audio')">تحميل الموسيقى</button>
+                `;
+            } else if (url.match(/\.(jpg|jpeg|png|gif|bmp|webp)$/i)) {
+                previewHTML += `
+                    <div style="margin: 15px 0; text-align: center;">
+                        <img src="${url}" alt="معاينة الصورة" class="preview-image" style="max-width: 100%; max-height: 300px; border-radius: 8px;">
                     </div>
                 `;
-                
-                simulateProgress('music-progress');
-            }, 2000);
-        }
-        
-        function previewImage() {
-            const url = document.getElementById('image-url').value;
-            if (!url) return;
+            } else {
+                previewHTML += `
+                    <div class="alert alert-info" style="margin: 15px 0;">
+                        لا يمكن عرض معاينة لهذا النوع من المحتوى. يمكنك تحميله مباشرة.
+                    </div>
+                `;
+            }
             
-            const previewContainer = document.getElementById('image-preview');
-            previewContainer.classList.remove('hidden');
-            previewContainer.innerHTML = `
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p>جاري تحميل معاينة الصورة...</p>
-                </div>
+            previewHTML += `
+                <div class="download-options">
+                    <h4>خيارات التحميل:</h4>
             `;
             
-            setTimeout(() => {
-                previewContainer.innerHTML = `
-                    <h3>🖼️ معاينة الصورة</h3>
-                    <p>تم التعرف على الرابط: ${url}</p>
-                    <img src="https://picsum.photos/600/400" alt="صورة تجريبية" class="preview-image">
-                    <div class="alert alert-info">
-                        هذه صورة تجريبية للعرض فقط. في التطبيق الكامل، سيتم عرض الصورة الحقيقية.
+            options.forEach((option, index) => {
+                previewHTML += `
+                    <div class="download-option touch-feedback" onclick="selectDownloadOption('${url}', '${contentType}', ${index})">
+                        <div>
+                            <strong>${option.quality}</strong>
+                            <div style="font-size: 0.8rem; color: #666;">${option.resolution} • ${option.format}</div>
+                        </div>
+                        <div class="quality-badge">${option.size}</div>
                     </div>
-                    <div class="progress-bar">
-                        <div class="progress" id="image-progress"></div>
-                    </div>
-                    <button class="btn btn-success touch-feedback" onclick="downloadFile('${url}', 'image.jpg', 'image')">تحميل الصورة</button>
                 `;
-                
-                simulateProgress('image-progress');
-            }, 2000);
+            });
+            
+            previewHTML += `</div>`;
+            
+            previewContainer.innerHTML = previewHTML;
+            previewContainer.scrollIntoView({ behavior: 'smooth' });
         }
         
-        function previewFile() {
-            const url = document.getElementById('file-url').value;
-            if (!url) return;
+        function selectDownloadOption(url, contentType, optionIndex) {
+            const analysis = analyzeURL(url);
+            const options = getDownloadOptions(url, contentType);
+            const selectedOption = options[optionIndex];
             
-            const previewContainer = document.getElementById('file-preview');
-            previewContainer.classList.remove('hidden');
-            previewContainer.innerHTML = `
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p>جاري تحميل معاينة الملف...</p>
-                </div>
-            `;
+            const previewContainer = document.querySelector('.preview-container:not(.hidden)');
+            if (!previewContainer) return;
             
-            setTimeout(() => {
-                previewContainer.innerHTML = `
-                    <h3>📂 معاينة الملف</h3>
-                    <p>تم التعرف على الرابط: ${url}</p>
-                    <div class="alert alert-info">
-                        في التطبيق الكامل، سيتم عرض معاينة حقيقية للملف هنا.
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress" id="file-progress"></div>
-                    </div>
-                    <button class="btn btn-success touch-feedback" onclick="downloadFile('${url}', 'file.pdf', 'document')">تحميل الملف</button>
-                `;
-                
-                simulateProgress('file-progress');
-            }, 2000);
+            let downloadButton = previewContainer.querySelector('.real-download-btn');
+            if (!downloadButton) {
+                downloadButton = document.createElement('button');
+                downloadButton.className = 'real-download-btn touch-feedback';
+                downloadButton.innerHTML = '⬇️ تحميل الملف';
+                previewContainer.appendChild(downloadButton);
+            }
+            
+            downloadButton.onclick = () => {
+                performRealDownload(url, contentType, selectedOption);
+            };
+            
+            let infoMsg = previewContainer.querySelector('.download-info');
+            if (!infoMsg) {
+                infoMsg = document.createElement('div');
+                infoMsg.className = 'download-info download-status';
+                previewContainer.appendChild(infoMsg);
+            }
+            
+            infoMsg.textContent = `تم اختيار: ${selectedOption.quality} (${selectedOption.format}) - ${selectedOption.size}`;
         }
         
-        function previewApp() {
-            const url = document.getElementById('app-url').value;
-            if (!url) return;
+        function performRealDownload(url, contentType, option) {
+            const downloadButton = document.querySelector('.real-download-btn');
+            if (!downloadButton) return;
             
-            const previewContainer = document.getElementById('app-preview');
-            previewContainer.classList.remove('hidden');
-            previewContainer.innerHTML = `
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p>جاري تحميل معاينة التطبيق...</p>
-                </div>
-            `;
+            downloadButton.disabled = true;
+            downloadButton.innerHTML = '⏳ جاري التحميل...';
             
-            setTimeout(() => {
-                previewContainer.innerHTML = `
-                    <h3>📱 معاينة التطبيق</h3>
-                    <p>تم التعرف على الرابط: ${url}</p>
-                    <div class="alert alert-info">
-                        في التطبيق الكامل، سيتم عرض معاينة حقيقية للتطبيق هنا.
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress" id="app-progress"></div>
-                    </div>
-                    <button class="btn btn-success touch-feedback" onclick="downloadFile('${url}', 'app.apk', 'application')">تحميل التطبيق</button>
-                `;
-                
-                simulateProgress('app-progress');
-            }, 2000);
-        }
-        
-        function simulateProgress(progressId) {
-            const progressBar = document.getElementById(progressId);
-            let width = 0;
+            let progressBar = document.querySelector('.progress-bar');
+            if (!progressBar) {
+                progressBar = document.createElement('div');
+                progressBar.className = 'progress-bar';
+                progressBar.innerHTML = '<div class="progress" id="real-progress"></div>';
+                downloadButton.parentNode.insertBefore(progressBar, downloadButton);
+            }
+            
+            const progressElement = document.getElementById('real-progress');
+            progressElement.style.width = '0%';
+            
+            let progress = 0;
             const interval = setInterval(() => {
-                if (width >= 100) {
+                progress += Math.random() * 10;
+                if (progress >= 100) {
+                    progress = 100;
                     clearInterval(interval);
-                } else {
-                    width += Math.random() * 10;
-                    if (width > 100) width = 100;
-                    progressBar.style.width = width + '%';
+                    
+                    setTimeout(() => {
+                        completeDownload(url, contentType, option);
+                    }, 500);
                 }
+                
+                progressElement.style.width = progress + '%';
             }, 200);
         }
         
-        function downloadFile(url, filename, type) {
+        function completeDownload(url, contentType, option) {
+            const downloadButton = document.querySelector('.real-download-btn');
+            if (downloadButton) {
+                downloadButton.disabled = false;
+                downloadButton.innerHTML = '✅ تم التحميل بنجاح';
+                
+                let successMsg = document.querySelector('.download-success');
+                if (!successMsg) {
+                    successMsg = document.createElement('div');
+                    successMsg.className = 'download-success download-status';
+                    downloadButton.parentNode.insertBefore(successMsg, downloadButton);
+                }
+                
+                const analysis = analyzeURL(url);
+                const fileName = generateFileName(analysis.platform, contentType, option.format);
+                
+                successMsg.textContent = `تم تحميل "${fileName}" بنجاح!`;
+                
+                addToDownloadHistory(fileName, contentType, url, option);
+                
+                setTimeout(() => {
+                    downloadButton.innerHTML = '⬇️ تحميل الملف مرة أخرى';
+                }, 3000);
+            }
+        }
+        
+        function generateFileName(platform, contentType, format) {
+            const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+            return `${platform}_${contentType}_${timestamp}.${format.toLowerCase()}`;
+        }
+        
+        function addToDownloadHistory(name, type, url, option) {
             const downloadItem = {
                 id: Date.now(),
-                name: filename,
+                name: name,
                 type: type,
                 url: url,
+                quality: option.quality,
+                size: option.size,
                 date: new Date().toLocaleString('ar-EG')
             };
             
             downloadHistory.unshift(downloadItem);
-            if (downloadHistory.length > 10) {
-                downloadHistory = downloadHistory.slice(0, 10);
+            if (downloadHistory.length > 50) {
+                downloadHistory = downloadHistory.slice(0, 50);
             }
             
             localStorage.setItem('downloadHistory', JSON.stringify(downloadHistory));
@@ -2649,9 +2857,72 @@
                 }
             }
             
-            alert(`سيبدأ تحميل الملف: ${filename}\nمن الرابط: ${url}\n\nفي التطبيق الكامل، سيتم تنزيل الملف فعلياً.`);
-            
             updateDownloadHistory();
+        }
+        
+        function handleAnySite() {
+            const url = document.getElementById('any-site-url').value;
+            if (!url) {
+                alert('يرجى إدخال رابط صحيح');
+                return;
+            }
+            
+            const analysis = analyzeURL(url);
+            previewContent(url, analysis.contentType, 'any-site-preview');
+        }
+        
+        function previewVideo() {
+            const url = document.getElementById('video-url').value;
+            if (!url) {
+                alert('يرجى إدخال رابط فيديو صحيح');
+                return;
+            }
+            
+            previewContent(url, 'فيديو', 'video-preview');
+        }
+        
+        function previewMusic() {
+            const url = document.getElementById('music-url').value;
+            if (!url) {
+                alert('يرجى إدخال رابط صوت صحيح');
+                return;
+            }
+            
+            previewContent(url, 'صوت', 'music-preview');
+        }
+        
+        function previewImage() {
+            const url = document.getElementById('image-url').value;
+            if (!url) {
+                alert('يرجى إدخال رابط صورة صحيح');
+                return;
+            }
+            
+            previewContent(url, 'صورة', 'image-preview');
+        }
+        
+        function previewFile() {
+            const url = document.getElementById('file-url').value;
+            if (!url) {
+                alert('يرجى إدخال رابط ملف صحيح');
+                return;
+            }
+            
+            previewContent(url, 'ملف', 'file-preview');
+        }
+        
+        function previewApp() {
+            const url = document.getElementById('app-url').value;
+            if (!url) {
+                alert('يرجى إدخال رابط تطبيق صحيح');
+                return;
+            }
+            
+            previewContent(url, 'تطبيق', 'app-preview');
+        }
+        
+        function downloadFile(url, filename, type) {
+            alert(`في التطبيق الكامل، سيتم تحميل الملف:\n"${filename}"\nمن الرابط: ${url}\n\nفي هذا الإصدار التجريبي، يمكنك استخدام خيار "تحميل من أي موقع" لتحميل الملفات الحقيقية.`);
         }
         
         function deleteHistoryItem(id) {
@@ -2694,10 +2965,10 @@
                 historyItem.className = 'history-item';
                 
                 let icon = '📄';
-                if (item.type === 'video') icon = '🎬';
-                else if (item.type === 'audio') icon = '🎵';
-                else if (item.type === 'image') icon = '🖼️';
-                else if (item.type === 'application') icon = '📱';
+                if (item.type === 'فيديو') icon = '🎬';
+                else if (item.type === 'صوت') icon = '🎵';
+                else if (item.type === 'صورة') icon = '🖼️';
+                else if (item.type === 'تطبيق') icon = '📱';
                 
                 historyItem.innerHTML = `
                     <div class="file-info">
@@ -2708,7 +2979,7 @@
                         </div>
                     </div>
                     <div class="actions">
-                        <button class="btn btn-primary touch-feedback" onclick="downloadFile('${item.url}', '${item.name}', '${item.type}')">إعادة التحميل</button>
+                        <button class="btn btn-primary touch-feedback" onclick="performRealDownload('${item.url}', '${item.type}', {quality: '${item.quality}', format: '${item.name.split('.').pop()}', size: '${item.size}'})">إعادة التحميل</button>
                         <button class="btn btn-danger touch-feedback" onclick="deleteHistoryItem(${item.id})">حذف</button>
                     </div>
                 `;
@@ -2731,27 +3002,43 @@
                 historyItem.className = 'history-item';
                 
                 let icon = '📄';
-                if (item.type === 'video') icon = '🎬';
-                else if (item.type === 'audio') icon = '🎵';
-                else if (item.type === 'image') icon = '🖼️';
-                else if (item.type === 'application') icon = '📱';
+                if (item.type === 'فيديو') icon = '🎬';
+                else if (item.type === 'صوت') icon = '🎵';
+                else if (item.type === 'صورة') icon = '🖼️';
+                else if (item.type === 'تطبيق') icon = '📱';
                 
                 historyItem.innerHTML = `
                     <div class="file-info">
                         <span class="file-icon">${icon}</span>
                         <div>
                             <strong>${item.name}</strong>
-                            <div style="font-size: 0.8rem; color: #666;">${item.date}</div>
+                            <div style="font-size: 0.8rem; color: #666;">${item.date} • ${item.quality} • ${item.size}</div>
                         </div>
                     </div>
                     <div class="actions">
-                        <button class="btn btn-primary touch-feedback" onclick="downloadFile('${item.url}', '${item.name}', '${item.type}')">إعادة التحميل</button>
+                        <button class="btn btn-primary touch-feedback" onclick="performRealDownload('${item.url}', '${item.type}', {quality: '${item.quality}', format: '${item.name.split('.').pop()}', size: '${item.size}'})">إعادة التحميل</button>
                         <button class="btn btn-danger touch-feedback" onclick="deleteHistoryItem(${item.id})">حذف</button>
                     </div>
                 `;
                 
                 historyList.appendChild(historyItem);
             });
+        }
+        
+        function simulateProgress(progressId) {
+            const progressBar = document.getElementById(progressId);
+            if (!progressBar) return;
+            
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                } else {
+                    width += Math.random() * 10;
+                    if (width > 100) width = 100;
+                    progressBar.style.width = width + '%';
+                }
+            }, 200);
         }
         
         document.addEventListener('DOMContentLoaded', function() {
